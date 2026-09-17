@@ -10,19 +10,9 @@ hotkey-web 是 HotKey 平台的 app 端（Web 客户端工作台），独立仓�
 - UI 改动请说明目标用户、桌面与移动视口、交互状态和可访问性影响。
 - 安全问题不得公开披露，请按 [安全策略](SECURITY.md) 使用私密报告渠道。
 
-## 本地开发
+## 当前状态
 
-前置条件：Node.js（建议使用仓库锁定的版本）与一个可访问的 `hotkey-server` 后端实例。
-
-```bash
-git clone https://github.com/StephenQiu30/hotkey-web.git
-cd hotkey-web
-npm ci
-cp .env.example .env
-npm run dev
-```
-
-默认启动在 `http://127.0.0.1:3000`。只使用本地或可丢弃凭据，不把后端地址或密钥提交到仓库。
+仓库仅保留规范文件。代码、依赖和运行配置恢复后，再补充真实可执行的开发与验证命令。
 
 ## 开发约束
 
@@ -33,17 +23,7 @@ npm run dev
 
 ## 提交前验证
 
-按变更范围至少运行：
-
-```bash
-npm run openapi:check
-npm run typecheck
-npm run test:unit
-npm run build
-git diff --check
-```
-
-涉及 OpenAPI 契约、依赖或 CI 时运行 `npm ci` 与 `npm audit --omit=dev --audit-level=high`。Pull Request 必须说明用户影响、实现边界、测试结果、OpenAPI/配置/部署影响、必要的截图或日志，以及仍未验证的风险。
+当前规范变更执行 `git diff --check` 并检查引用。恢复实现后，按变更范围执行 OpenAPI 漂移、类型、单元测试、构建与依赖安全检查。Pull Request 必须说明用户影响、实现边界、真实验证结果与未覆盖风险。
 
 ## Git 提交规范
 

@@ -2,6 +2,8 @@
 
 本文件为 Codex 与 Claude Code 提供在 hotkey-web 仓库中工作的持久指导。hotkey-web 是 HotKey 平台的 **app 端（Web 客户端工作台）**，独立仓库，通过消费 `hotkey-server` 发布的 OpenAPI 契约与后端交互。
 
+当前工作树仅保留规范文件。以下技术、目录和验证要求用于后续实现，不表示代码、依赖或命令已存在。
+
 ## 项目概述
 
 ### 技术栈
@@ -36,22 +38,11 @@ hotkey-web/
 └── openapi2ts.config.ts  # @umijs/openapi 生成配置
 ```
 
-## 常用命令
-
-```bash
-npm run dev                  # 开发服务器
-npm run build                # 生产构建
-npm run typecheck            # 类型检查
-npm run test:unit            # test/ 下的单元测试
-npm run openapi:generate     # 从 hotkey-server OpenAPI 重新生成 API 客户端
-npm run openapi:check        # 校验发布契约与客户端无漂移
-```
-
 ## 架构
 
 ### API 客户端生成
 
-- 只消费 `hotkey-server` 发布的 OpenAPI 契约（`docs/openapi/swagger.json`）。
+- 只消费 `hotkey-server` 发布的 OpenAPI 契约（`docs/openapi/openapi.json`）。
 - 使用 `@umijs/openapi` 工具，生成路径为 `src/services/hotkey/hotkey-server/`。
 - **绝不手写后端 DTO、接口路径或重复服务层**；后端契约变更时，先在后端生成 OpenAPI，再运行 `npm run openapi:generate` 与 `npm run openapi:check`。
 
@@ -82,15 +73,6 @@ npm run openapi:check        # 校验发布契约与客户端无漂移
 - Pull Request 说明用户影响、实现边界、测试命令与结果、OpenAPI/配置/部署影响和残余风险。
 - 未经用户明确要求，不创建提交、不推送、不创建或合并 Pull Request。
 
-## 验证入口
+## 验证要求
 
-```bash
-npm ci
-npm run openapi:check
-npm run typecheck
-npm run test:unit
-npm run build
-git diff --check
-```
-
-按变更风险运行必要检查，并在交付时说明实际结果与未覆盖风险。
+当前规范变更检查文件一致性与 `git diff --check`。恢复实现后，必须提供并执行依赖安装、OpenAPI 漂移、类型、单元测试与构建检查；交付时说明实际结果与未覆盖风险。
