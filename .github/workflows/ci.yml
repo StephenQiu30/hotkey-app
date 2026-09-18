@@ -1,0 +1,60 @@
+name: CI
+
+# Flutter 应用尚未初始化（暂无 pubspec.yaml），本工作流通过 paths 过滤，
+# 仅在 lib/、test/、integration_test/ 或 pubspec 文件落地后才触发。
+on:
+  push:
+    branches: [main]
+    paths:
+      - "pubspec.yaml"
+      - "pubspec.lock"
+      - "lib/**"
+      - "test/**"
+      - "integration_test/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "pubspec.yaml"
+      - "pubspec.lock"
+      - "lib/**"
+      - "test/**"
+      - "integration_test/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+          # 应用初始化后按 PROJECT.md 锁定 Flutter/Dart 版本，改为 flutter-version: 'x.y.z'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Format check (dart format)
+        run: |
+          dirs=""
+          for d in lib test integration_test; do
+            [ -d "$d" ] && dirs="$dirs $d"
+          done
+          if [ -n "$dirs" ]; then
+            dart format --output=none --set-exit-if-changed $dirs
+          fi
+
+      - name: Analyze (flutter analyze)
+        run: flutter analyze
+
+      - name: Test (flutter test)
+        run: flutter test
