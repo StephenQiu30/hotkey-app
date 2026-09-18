@@ -6,48 +6,59 @@
 *.swo
 skills-lock.json
 
-# Environment files
+# Local configuration and secrets
 .env
 .env.*
 !.env.example
-!.env.prod.example
+*.jks
+*.keystore
+*.p12
+*.p8
+*.mobileprovision
+/android/key.properties
+/android/local.properties
 
-# Dependencies and language caches
-node_modules/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Build output and reports
-dist/
-build/
+# Dart and Flutter generated state
+.dart_tool/
+.pub/
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+/build/
 coverage/
-artifacts/
-/reports/
-test-results/
-playwright-report/
-.next/
-out/
-tsconfig.tsbuildinfo
+*.log
+# Application pubspec.lock is intentionally tracked.
 
-# Temporary and local tool state
+# Native platform generated state
+**/android/.gradle/
+**/android/captures/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Flutter.framework/
+**/ios/Flutter/App.framework/
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/macos/Pods/
+**/macos/Flutter/ephemeral/
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/ios/Flutter/ephemeral/
+**/xcuserdata/
+**/*.xcuserstate
+DerivedData/
+
+# Temporary reports and local tools
 tmp/
 temp/
 .tmp/
 .tools/
-.playwright-mcp/
+artifacts/
+/reports/
 .product-design/
 .codex-design/
-dogfood-output/
 product-design-output/
-*.log
-npm-debug.log*
-
-# Backend-only artifacts
-/backend/package-lock.json
-/backend/hotkey-server
-/backend/hotkey
-/backend/.symphony-codex-prompt.*
-/backend/.symphony-workspaces/
-/docs/swagger.json
-/docs/swagger.yaml

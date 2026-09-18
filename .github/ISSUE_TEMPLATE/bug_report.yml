@@ -41,7 +41,7 @@ body:
     id: environment
     attributes:
       label: 运行环境
-      description: 请按影响范围提供操作系统、浏览器、Node.js、Go/PostgreSQL/Redis/MinIO 版本、运行角色和相关非敏感配置。
+      description: 请按影响范围提供设备/模拟器、系统版本、Flutter/Dart 版本、应用构建号、后端契约版本和相关非敏感配置。
     validations:
       required: true
   - type: textarea

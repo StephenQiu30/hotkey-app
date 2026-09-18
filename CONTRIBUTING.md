@@ -1,29 +1,18 @@
-# 为 HotKey Web（app 端）贡献
+# 为 HotKey App 贡献
 
-hotkey-web 是 HotKey 平台的 app 端（Web 客户端工作台），独立仓库。开始修改前，请阅读仓库根目录唯一的 `AGENTS.md`；参与协作时保持尊重并聚焦可验证事实。
+`hotkey-app` 使用 Flutter + Dart，是 HotKey 独立客户端。先阅读 [PROJECT.md](PROJECT.md)、[AGENTS.md](AGENTS.md) 和 [HANDOVER.md](HANDOVER.md)。Web 工作台在 `hotkey-server/frontend/`。
 
-## 从哪里开始
+## 当前状态与开发约束
 
-- 小型修复、测试、文案和文档改进可以直接提交 Pull Request。
-- 新功能、跨页面交互或大型重构，请先创建 Feature Request 对齐问题、范围和验收标准。
-- 需要后端新能力时，先在 `hotkey-server` 仓库对齐契约，再在本仓库消费生成的 OpenAPI 客户端。
-- UI 改动请说明目标用户、桌面与移动视口、交互状态和可访问性影响。
-- 安全问题不得公开披露，请按 [安全策略](SECURITY.md) 使用私密报告渠道。
+目前仅有规范与协作配置，Flutter 应用尚未初始化。新功能先明确需求、平台、设计与验收；后端新能力先在 server 对齐 OpenAPI，再生成 Dart 客户端。
 
-## 当前状态
+使用 Flutter/Dart pub，提交应用 `pubspec.lock`。代码放 `lib/`，单元/Widget 测试放 `test/`，设备集成测试放 `integration_test/`。不手写另一套后端 DTO，不提交凭据、签名材料、用户数据或构建产物。
 
-仓库仅保留规范文件。代码、依赖和运行配置恢复后，再补充真实可执行的开发与验证命令。
-
-## 开发约束
-
-- 使用 Next.js App Router、React、TypeScript、Tailwind CSS 和现有 UI 组合组件；测试位于 `test/`。
-- API 类型与请求函数只由 `hotkey-server` 发布契约生成，不手写后端 DTO 或接口路径。
-- 不提交 `.env`、Token、用户数据、数据库内容、构建产物或本地工具目录。
-- 修改后端契约后，先在后端生成 OpenAPI，再执行 `npm run openapi:generate` 并审查生成差异。
+UI 变更说明目标平台、交互状态、字体缩放与可访问性影响。安全问题按 [安全策略](SECURITY.md) 私密报告。
 
 ## 提交前验证
 
-当前规范变更执行 `git diff --check` 并检查引用。恢复实现后，按变更范围执行 OpenAPI 漂移、类型、单元测试、构建与依赖安全检查。Pull Request 必须说明用户影响、实现边界、真实验证结果与未覆盖风险。
+纯规范变更执行 `git diff --check` 并检查引用。应用初始化后按范围执行 Dart 格式、`flutter analyze`、`flutter test`、契约生成检查、平台构建和设备集成测试。交付明确实际命令、结果与未覆盖平台，不把 SDK 缺失误称业务测试失败。
 
 ## Git 提交规范
 
@@ -42,6 +31,6 @@ hotkey-web 是 HotKey 平台的 app 端（Web 客户端工作台），独立仓�
 ```text
 feat(app): 新增监控空状态
 fix(app): 恢复弹窗关闭后的触发器焦点
-test(services): 覆盖 OpenAPI 客户端请求映射
-docs(repo): 按 app 端定位重建规范文件
+test(api): 覆盖生成客户端请求映射
+docs(repo): 固定 Flutter 客户端规范
 ```
