@@ -1,6 +1,6 @@
 # HotKey App 项目与技术选型
 
-更新日期：2026-09-18。本文件是 `hotkey-app` 的技术选型入口。工程规范见 [AGENTS.md](AGENTS.md)，当前交接见 [HANDOVER.md](HANDOVER.md)。
+更新日期：2026-09-21。本文件是 `hotkey-app` 的技术选型入口。工程规范见 [AGENTS.md](AGENTS.md)，当前交接见 [HANDOVER.md](HANDOVER.md)。
 
 ## 1. 定位与固定技术
 
@@ -35,7 +35,7 @@ hotkey-app/
 └── pubspec.lock
 ```
 
-平台目录由 Flutter 官方工具按已确定目标生成，不手工伪造平台工程。后端快照位置为 `hotkey-server/docs/openapi/openapi.json`，当前尚未重建；禁止从旧 Web 客户端复制 DTO。生成器确定后锁定配置和版本，生成代码可复现，业务调用通过单一客户端适配入口。
+平台目录由 Flutter 官方工具按已确定目标生成，不手工伪造平台工程。唯一契约读取同版本服务端运行时 `/openapi.json`，源为 FastAPI 路由与 Pydantic；需要离线归档时仅使用同提交 CI 导出的产物，不手工维护 OpenAPI 文件；禁止从旧 Web 客户端复制 DTO。生成器确定后锁定配置和版本，生成代码可复现，业务调用通过单一客户端适配入口。
 
 客户端只保存必要的会话与展示数据，秘密使用目标平台安全存储；API 地址属于可见配置，不将打包配置误当成秘密。移动端鉴权、刷新与退出按服务端契约实现，不能直接照搬 Web 的同源 Cookie/CSRF 假设。
 
@@ -59,3 +59,7 @@ Flutter 初始化后建立以下检查入口；当前没有 pubspec，不宣称�
 两个项目分别在各自仓库根维护 PROJECT 与 HANDOVER。这里不再重复 server 的基础设施选型，以避免两份后端规范漂移；服务端接口变化必须同步生成客户端及验证。
 
 依据：[Flutter 官方项目创建说明](https://docs.flutter.dev/reference/create-new-app)。本文固定技术与目录方向，不代替应用实现或设备验收。
+
+## 5. 产品交付编排
+
+统一需求和跨仓库排期见 [Server BACKLOG](../hotkey-server/BACKLOG.md) 的 App 交付队列。App 独立安排目标平台、鉴权、监控/事件/证据及设备验证；Web 的 M5 验收不代表 App 完成，App 未初始化也不应让已冻结的 Web 首版无限等待。目标平台和首批功能由 App 范围切片冻结，当前不扩为全部平台或全功能对齐。

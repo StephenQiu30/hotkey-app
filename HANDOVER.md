@@ -28,3 +28,7 @@
 已通过：本地 Markdown 引用、旧 Web 现行要求残留检查、`git diff --check`，以及 HEAD 保留核对。`git check-ignore` 确认 `pubspec.lock`、`lib/main.dart` 可跟踪，`.dart_tool`、构建产物和签名材料被忽略。Flutter 构建、设备和真实 API 联调未执行。
 
 后续更新真实改动、运行命令、测试结果和未决项；技术变动回写 PROJECT。发布前需要单独准备签名、分发和平台验收证据，不将当前规范状态写成已发布版本。
+
+## 2026-09-21 文档复核
+
+已纠正 PROJECT 的失效 OpenAPI 快照引用，统一读取 server 运行时契约；App 初始化、身份接入、核心流程与设备验收已列入 Server BACKLOG 的独立队列。本轮只做文档修订；以上 2026-09-18 的起点、改名与检查属于历史记录，不能当作当前 Git 状态。当前核对 HEAD 为 `0c695ea`，Flutter 工程仍未初始化，未重跑设备或构建验证。

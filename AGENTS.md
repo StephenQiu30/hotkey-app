@@ -8,7 +8,7 @@
 
 - 固定 Flutter + Dart，依赖使用 Flutter/Dart pub；应用提交 `pubspec.lock`，初始化时锁定 Flutter/Dart 兼容版本。
 - 后端业务与数据库由 `hotkey-server` 负责；App 消费其 FastAPI OpenAPI 契约，不直连 PostgreSQL、Redis、Kafka、MinIO 管理接口。
-- 后端 DTO 和端点由同一契约生成，生成路径固定 `lib/api/`；具体 Dart 生成器和 HTTP 库在初始化切片确定并锁定，禁止复制旧 TypeScript 客户端。
+- 后端 DTO 和端点由同提交服务端运行时 `/openapi.json` 生成，离线输入只能是 CI 自动导出产物，不维护第二份契约；生成路径固定 `lib/api/`；具体 Dart 生成器和 HTTP 库在初始化切片确定并锁定，禁止复制旧 TypeScript 客户端。
 - 不恢复 Next.js、React、TypeScript、pnpm 或 Axios 应用。用户已确定 Flutter，不重复询问框架；新增有实质影响的插件或外部服务才按对应设计处理。
 - 目标平台、应用标识、状态管理和导航方案按当前切片冻结；不擅自创建所有平台，不预装无使用场景的框架。
 
