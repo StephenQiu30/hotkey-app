@@ -14,6 +14,9 @@
 
 ## 目录与开发
 
+- 实施前必须核验 [Server 046 前置计划](../hotkey-server/docs/plans/046-全局异常与响应契约前置计划.md) S03 通过证据，统一协议见同编号 Design；设计准备可先开展。App 业务接入还须完成 Server BACKLOG 的 APP-02 契约与设备验证。
+- 单一传输入口消费生成 DTO，按 code/status 分支，读取 details 及请求 ID 回退；分别验证网络、超时、取消、非 JSON、204、文件、会话失效和失败任务查询。不复制服务端错误模型、不把所有异常包装成 HTTP 500、不在传输层自动重试写请求。
+
 - `lib/main.dart` 只做启动；`lib/app/` 负责应用装配、主题和导航，`lib/features/` 按业务功能组织，`lib/api/` 保存生成客户端。
 - 单元/Widget 测试放 `test/`，设备集成测试放 `integration_test/`；平台工程由 Flutter 官方工具生成。
 - Dart 文件用 snake_case，类用 UpperCamelCase，成员用 lowerCamelCase；遵循 Dart 格式与分析规则。
