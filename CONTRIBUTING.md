@@ -19,18 +19,18 @@ UI 变更说明目标平台、交互状态、字体缩放与可访问性影响�
 每个提交只表达一个可审查目的，标题统一使用：
 
 ```text
-<type>(<scope>): <subject>
+<type>(<scope>):<subject>
 ```
 
 - `scope` 必填，使用稳定的小写英文模块名，例如 `app`、`docs`、`ci` 或 `repo`。
 - `type` 只使用 `feat`、`fix`、`test`、`refactor`、`docs`、`chore`、`perf`、`build`、`ci` 或 `revert`。
-- `subject` 使用简体中文动宾短语；冒号后保留一个空格，标题不超过 72 个字符，不使用英文主题、`impl`、空 scope 或自定义前缀。
+- `subject` 使用简体中文动宾短语；冒号后不加空格，标题不超过 72 个字符，不使用英文主题、`impl`、空 scope 或自定义前缀。
 - 不兼容变更在冒号前增加 `!`，并在正文添加 `BREAKING CHANGE:` 与迁移说明。
 - 行为变更按 `test` → `feat`/`fix` → `refactor`/`docs` 的顺序提交；提交正文使用中文，并以“变更摘要”“变更原因”“验证”记录实际内容和命令。
 
 ```text
-feat(app): 新增监控空状态
-fix(app): 恢复弹窗关闭后的触发器焦点
-test(api): 覆盖生成客户端请求映射
-docs(repo): 固定 Flutter 客户端规范
+feat(app):新增监控空状态
+fix(app):恢复弹窗关闭后的触发器焦点
+test(api):覆盖生成客户端请求映射
+docs(repo):固定 Flutter 客户端规范
 ```
