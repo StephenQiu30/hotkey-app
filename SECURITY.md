@@ -8,12 +8,12 @@ HotKey App（Flutter 客户端）会处理账号与会话、原始证据与报�
 
 | 版本 | 安全更新 |
 | --- | --- |
-| `main` / 最新发布版本 | 支持 |
+| `main` | 接收报告并评估 |
 | 历史提交与未维护分支 | 不支持 |
 
 ## 私密报告漏洞
 
-请使用 GitHub 的 [Private Vulnerability Reporting](https://github.com/StephenQiu30/hotkey-web/security/advisories/new) 私密提交报告，不要创建包含漏洞细节的公开 Issue、Pull Request 或 Discussion。若私密入口不可用，只创建不含漏洞细节的 Issue 请求维护者提供私密联系方式。
+请使用 GitHub 的 [Private Vulnerability Reporting](https://github.com/StephenQiu30/hotkey-app/security/advisories/new) 私密提交报告，不要创建包含漏洞细节的公开 Issue、Pull Request 或 Discussion。若私密入口不可用，只创建不含漏洞细节的 Issue 请求维护者提供私密联系方式。
 
 报告最好包含受影响的版本或提交、页面或功能、漏洞类型、影响范围、前置条件、最小化复现步骤和可能的缓解措施。不要提交真实 Token、Cookie、密钥、邮箱、个人数据、内容正文或可直接利用的攻击载荷。
 
@@ -37,4 +37,4 @@ HotKey App（Flutter 客户端）会处理账号与会话、原始证据与报�
 - 会话按平台安全存储处理；不提交 `.env`、Token、keystore、签名私钥或用户数据。
 - 使用受支持的 Flutter/Dart 与插件版本，审查依赖和原生平台权限。
 
-本地目录现名为 `hotkey-app`；GitHub 远端本轮未改名，因此以上私密报告地址暂保留实际 `hotkey-web` 入口，远端改名后同步。
+此仓库尚无可运行的 Flutter 应用；服务端或 Web 漏洞请通过 [hotkey-server 安全入口](https://github.com/StephenQiu30/hotkey-server/security/advisories/new) 报告。

@@ -1,0 +1,21 @@
+name: 功能建议
+description: 讨论未来客户端范围、平台或交互
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: "本仓库目前尚无可运行 App。请先查阅 PROJECT.md 与服务端 BACKLOG。"
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景与目标平台
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议与服务端依赖
+      description: 说明需要哪些现有或新增 API，以及如何验证设备端体验。
+    validations:
+      required: true

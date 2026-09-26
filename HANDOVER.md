@@ -1,6 +1,6 @@
 # HotKey App 交接
 
-更新日期：2026-09-18。先阅读 [PROJECT](PROJECT.md)、[AGENTS](AGENTS.md)、[贡献规范](CONTRIBUTING.md)。
+更新日期：2026-09-26。先阅读 [README](README.md)、[PROJECT](PROJECT.md)、[AGENTS](AGENTS.md)、[贡献规范](CONTRIBUTING.md)。下文的 2026-09-18/21 状态为当时记录。
 
 ## 1. 本次完成
 
@@ -10,7 +10,7 @@
 
 ## 2. 当前状态
 
-- 2026-09-21 已对齐 [Server 046 统一异常与响应设计](../hotkey-server/docs/design/046-全局异常与响应契约设计.md)；046 S03 是 App 实施前置，APP-02 另做设备契约验证。目前仅同步规范，未初始化或验证 Flutter 工程。
+- 2026-09-21 已对齐 [Server 046 统一异常与响应设计](https://github.com/StephenQiu30/hotkey-server/blob/main/docs/design/046-全局异常与响应契约设计.md)；046 S03 是 App 实施前置，APP-02 另做设备契约验证。目前仅同步规范，未初始化或验证 Flutter 工程。
 
 本轮起点为本地 `main`、HEAD `8901017`，起点工作区干净。重命名不会生成 Git 提交，当前文档与配置改动尚未提交或推送。
 
@@ -34,3 +34,7 @@
 ## 2026-09-21 文档复核
 
 已纠正 PROJECT 的失效 OpenAPI 快照引用，统一读取 server 运行时契约；App 初始化、身份接入、核心流程与设备验收已列入 Server BACKLOG 的独立队列。本轮只做文档修订；以上 2026-09-18 的起点、改名与检查属于历史记录，不能当作当前 Git 状态。当前核对 HEAD 为 `0c695ea`，Flutter 工程仍未初始化，未重跑设备或构建验证。
+
+## 2026-09-26 公开仓库文档
+
+当前 `origin` 已指向 `StephenQiu30/hotkey-app`。根 README 说明规划阶段与服务端入口；Issue/PR 模板和安全入口使用现行仓库地址。Flutter 工程仍未初始化，因此这些文档检查不代表应用构建或设备验证。

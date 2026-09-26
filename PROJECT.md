@@ -41,7 +41,7 @@ hotkey-app/
 
 ## 3. 开发与验证
 
-公共异常、HTTP 状态、错误码、资源/分页/任务响应遵循 [Server 046 Design](../hotkey-server/docs/design/046-全局异常与响应契约设计.md)。Server 046 S03 通过后才开始本仓库实现；范围与设计准备可先开展。App 业务接入另须完成 APP-02 的生成客户端和设备契约验证，Web 通过不代表 App 通过，服务端门禁也不反向等待 Flutter 初始化。
+公共异常、HTTP 状态、错误码、资源/分页/任务响应遵循 [Server 046 Design](https://github.com/StephenQiu30/hotkey-server/blob/main/docs/design/046-全局异常与响应契约设计.md)。Server 046 S03 通过后才开始本仓库实现；范围与设计准备可先开展。App 业务接入另须完成 APP-02 的生成客户端和设备契约验证，Web 通过不代表 App 通过，服务端门禁也不反向等待 Flutter 初始化。
 
 单一客户端入口使用生成的 ErrorView，正确读取 details 和响应头/body request_id；分别处理 HTTP、网络、超时、取消、非 JSON。失败任务的成功查询仍按 HTTP 200 消费业务状态；取消请求不等于已取消任务。字段/页面/操作反馈由功能层决定，不按 message 匹配、不自动重试写操作；204 与文件不进入 JSON 包装。
 
@@ -58,7 +58,7 @@ Flutter 初始化后建立以下检查入口；当前没有 pubspec，不宣称�
 
 ## 4. 重命名与交付
 
-本次只把本地目录改名为 `hotkey-app`，保留 `.git`、分支和提交历史。`origin` 仍指向原 GitHub `hotkey-web` 仓库；未执行远端仓库重命名、改地址、提交或推送。安全报告链接暂保留实际远端地址，待远端改名后同步。
+本地目录由 `hotkey-web` 改名为 `hotkey-app`，保留 `.git`、分支和提交历史。当前 `origin` 为 `https://github.com/StephenQiu30/hotkey-app.git`；客户端仍未初始化。历史重命名记录见 [HANDOVER.md](HANDOVER.md)。
 
 两个项目分别在各自仓库根维护 PROJECT 与 HANDOVER。这里不再重复 server 的基础设施选型，以避免两份后端规范漂移；服务端接口变化必须同步生成客户端及验证。
 
@@ -66,4 +66,4 @@ Flutter 初始化后建立以下检查入口；当前没有 pubspec，不宣称�
 
 ## 5. 产品交付编排
 
-统一需求和跨仓库排期见 [Server BACKLOG](../hotkey-server/BACKLOG.md) 的 App 交付队列。App 独立安排目标平台、鉴权、监控/事件/证据及设备验证；Web 的 M5 验收不代表 App 完成，App 未初始化也不应让已冻结的 Web 首版无限等待。目标平台和首批功能由 App 范围切片冻结，当前不扩为全部平台或全功能对齐。
+统一需求和跨仓库排期见 [Server BACKLOG](https://github.com/StephenQiu30/hotkey-server/blob/main/BACKLOG.md) 的 App 交付队列。App 独立安排目标平台、鉴权、监控/事件/证据及设备验证；Web 的 M5 验收不代表 App 完成，App 未初始化也不应让已冻结的 Web 首版无限等待。目标平台和首批功能由 App 范围切片冻结，当前不扩为全部平台或全功能对齐。

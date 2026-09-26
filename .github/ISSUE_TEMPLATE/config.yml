@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 报告服务端或 Web 问题
+    url: https://github.com/StephenQiu30/hotkey-server/issues/new/choose
+    about: API、任务执行和 Web 工作台的问题请到 hotkey-server 仓库反馈。
+  - name: 私密报告 App 安全漏洞
+    url: https://github.com/StephenQiu30/hotkey-app/security/advisories/new
+    about: 请勿在公开 Issue 中披露漏洞或凭据；若入口不可用，先创建不含细节的 Issue 请求私密联系方式。
